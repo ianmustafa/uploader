@@ -1,0 +1,27 @@
+.col-filename {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.footer {
+  transition: opacity .3s ease;
+}
+@media (min-width: 920px) {
+  .col-filename {
+    overflow: unset;
+    text-overflow: unset;
+    white-space: unset;
+  }
+  .footer {
+    opacity: .6;
+  }
+  .footer:hover {
+    opacity: 1;
+  }
+}
+
+/* Disable hover effect on list-group-item by Bootswatch: Cyborg */
+.list-group-item:hover {
+  background-color: #222;
+  color: inherit;
+}
