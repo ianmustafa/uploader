@@ -2,10 +2,10 @@
 var humanFileSize = function (bytes) {
   if (bytes >= 1000000000)
     return (bytes / 1000000000).toFixed(2) + ' GB';
-  
+
   if (bytes >= 1000000)
     return (bytes / 1000000).toFixed(2) + ' MB';
-  
+
   if (bytes >= 1000)
     return (bytes / 1000).toFixed(2) + ' KB';
 
@@ -16,13 +16,13 @@ var humanFileSize = function (bytes) {
 var humanUploadSpeed = function (bytes) {
   if (bytes >= 1000000000)
     return (bytes / 1000000000).toFixed(2) + ' GB/s';
-  
+
   if (bytes >= 1000000)
     return (bytes / 1000000).toFixed(2) + ' MB/s';
-  
+
   if (bytes >= 1000)
     return (bytes / 1000).toFixed(2) + ' KB/s';
-  
+
   return bytes.toFixed(2) + ' B/s';
 }
 
@@ -64,7 +64,7 @@ var ongoingFiles = {};
 $(function () {
   $('[name=files]').change(function () {
     $(this).simpleUpload('upload.php', {
-      // Callback for started upload            
+      // Callback for started upload.
       start: function(file) {
         // Because that is this!. We need "that" for cancel button event
         var that = this;
@@ -109,7 +109,7 @@ $(function () {
         this.$cancelButton.click(function() {
           // Cancel "that" upload. Haha 😂
           that.upload.cancel();
-          
+
           // Remove progress
           that.$progress.slideUp(150, function () {
             $(this).remove()
@@ -127,7 +127,7 @@ $(function () {
         $('.list-group').show().prepend(this.$block);
       },
 
-      // Callback for progress            
+      // Callback for progress.
       progress: function(progress) {
         // Get time, NOW!
         var time = Date.now();
@@ -171,7 +171,7 @@ $(function () {
             '<span class="d-block d-sm-inline d-lg-block">' + progressString +
             ' <span class="text-muted">at</span> ' + humanUploadSpeed(uploadSpeed) +
             ' <span class="text-muted">in</span> ' + remainingTime(uploadETA) + '</span>');
-        }              
+        }
         // Change the progress bar
         this.$progressBar.width(progressString);
       },
@@ -202,6 +202,7 @@ $(function () {
         }
       },
 
+      // Callback for error.
       error: function(error) {
         // Remove progress
         this.$progress.slideUp(150, function () {
